@@ -38,15 +38,20 @@ c----------------------------------------------------------------------
       
 !      MODEL%SNOD(model%t) = model%NEW
 !      MODEL%SDEN(model%t) = model%NEWP
+      
+      ! replace previous variables by current ones:
             
-      MODEL%t2_last  = MODEL%TSFC(2)
+      MODEL%t2_last  = MODEL%TSFC(2) 
       
       MODEL%OLD = model%new
       MODEL%CD  = model%newp
       
+      ! Read new variables from files: Temperature and Precipitation.
+      
       read(201, *)  MODEL%t2_current
       read(202, *)  MODEL%PCPN
       
+      ! update time:
       model%t = model%t + model%dt
 
       END SUBROUTINE update
