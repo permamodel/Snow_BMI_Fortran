@@ -116,9 +116,9 @@ program bmi_main
             
   print *, 'Updating'
   
-!   s = model%update_until(DBLE(55.0))
+  s = model%update_until(DBLE(55.0))
   
-  do i = 1, 57
+  do i = 1, 5
   
 !   s = model%set_value(var_name1, [-5.0]) ! set air temperature
 !   s = model%set_value(var_name2, [0.0])  ! set precipitation
