@@ -1,0 +1,5 @@
+Name: BMI
+Description: Basic Model Interface for Fortran
+Version: 1.0
+Libs: -L/Users/kangwang/Documents/test/lib -lbmif
+Cflags: -I/Users/kangwang/Documents/test/include -std=f2003
