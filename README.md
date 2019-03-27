@@ -14,6 +14,8 @@ mkdir _build && cd _build
 
 cmake .. -DCMAKE_INSTALL_PREFIX=[install_path]
 
+make install
+
 cd [install_path]/bin/
 
 ./run_bmisnow_model [configuration_file]
