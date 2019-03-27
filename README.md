@@ -12,4 +12,14 @@ BMI and some code changes are made by Kang Wang, University of Colorado Boulder
 
 mkdir _build && cd _build
 
-cmake .. -DCMAKE_INSTALL_PREFIX=<path>
+cmake .. -DCMAKE_INSTALL_PREFIX=[install_path]
+
+cd [install_path]/bin/
+
+./run_bmisnow_model [configuration_file]
+
+### TODO list ###
+
+1 - check and replace variable name with standard name
+
+2 - write more unit tests for each function
