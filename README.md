@@ -20,6 +20,12 @@ cd [install_path]/bin/
 
 ./run_bmisnow_model [configuration_file]
 
+e.g., ./run_bmisnow_model ../../Snow_BMI_Fortran/snow/snow_model_test.cfg
+
+**PLEASE NOTE** The input files path may need to be changed:
+`Input Files Path`
+`/Users/kangwang/Documents/simple_snow_model/`
+
 ### TODO list ###
 
 1 - check and replace variable name with standard name
