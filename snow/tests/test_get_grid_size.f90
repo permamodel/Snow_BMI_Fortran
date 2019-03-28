@@ -6,7 +6,7 @@ program test_get_grid_size
 
   implicit none
 
-  integer, parameter :: grid_id = 0
+  integer, parameter :: grid_id = 1
   integer, parameter :: expected_size = 1
 
   type (bmi_snow) :: m

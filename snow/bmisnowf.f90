@@ -258,31 +258,31 @@ contains
 
     select case(var_name)
     case('land_surface_air__temperature')
-       grid_id = 0
+       grid_id = 1
        bmi_status = BMI_SUCCESS
     case('precipitation_mass_flux')
-       grid_id = 0
+       grid_id = 1
        bmi_status = BMI_SUCCESS
     case('snowpack__depth')
-       grid_id = 0
+       grid_id = 1
        bmi_status = BMI_SUCCESS
     case('snowpack__mass-per-volume_density')
-       grid_id = 0
+       grid_id = 1
        bmi_status = BMI_SUCCESS
     case('precipitation_mass_flux_adjust_factor')
-       grid_id = 0
+       grid_id = 1
        bmi_status = BMI_SUCCESS
     case('snow_class')
-       grid_id = 0
+       grid_id = 1
        bmi_status = BMI_SUCCESS
     case('open_area_or_not')
-       grid_id = 0
+       grid_id = 1
        bmi_status = BMI_SUCCESS
     case('snowpack__initial_depth')
-       grid_id = 0
+       grid_id = 1
        bmi_status = BMI_SUCCESS
     case('initial_snow_density')
-       grid_id = 0
+       grid_id = 1
        bmi_status = BMI_SUCCESS
     case default
        grid_id = -1
