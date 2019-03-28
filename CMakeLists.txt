@@ -4,7 +4,7 @@ project(bmi Fortran)
 
 set(bmi_version 1.0)
 set(bmi_lib bmif)
-set(bmiheat_lib bmisnowf)
+set(bmisnow_lib bmisnowf)
 set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_BINARY_DIR}/mod)
 
 set(CMAKE_MACOSX_RPATH 1)
