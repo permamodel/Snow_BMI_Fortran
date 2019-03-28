@@ -16,7 +16,13 @@ fi
 
 echo $CONDA_PREFIX
 
-examples="info_ex"
+examples="irf_ex \
+    change_prec_adjust_factor_ex \
+    conflicting_instances_ex \
+    get_value_ex \
+    info_ex \
+    set_value_ex \
+    vargrid_ex"
 for exe in $examples; do
     run_install_name_tool $exe examples
 done
