@@ -27,6 +27,7 @@ make_test(test_set_value)
 make_test(test_get_var_type)
 make_test(test_get_var_units)
 make_test(test_update)
+make_test(test_update_frac)
 make_test(test_finalize)
 
 file(
