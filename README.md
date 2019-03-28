@@ -10,21 +10,28 @@ BMI and some code changes are made by Kang Wang, University of Colorado Boulder
 
 ### Compile with cmake ###
 
-mkdir _build && cd _build
+`mkdir _build && cd _build`
 
-cmake .. -DCMAKE_INSTALL_PREFIX=[install_path]
+`cmake .. -DCMAKE_INSTALL_PREFIX=[install_path]`
 
-make install
+`make install`
 
-cd [install_path]/bin/
+`source ../scripts/update_rpaths.sh`
 
-./run_bmisnow_model [configuration_file]
+`ctest`
+
+If you want to run the compiled BMI model:
+
+`cd [install_path]/bin/`
+
+`./run_bmisnow_model [configuration_file]`
 
 e.g., ./run_bmisnow_model ../../Snow_BMI_Fortran/snow/snow_model_test.cfg
 
 **PLEASE NOTE** The input files path may need to be changed:
 `Input Files Path`
 `/Users/kangwang/Documents/simple_snow_model/`
+if you put the input files under the same directory, *please leave this line as blank*.
 
 ### TODO list ###
 
