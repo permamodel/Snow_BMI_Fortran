@@ -19,7 +19,7 @@ program test_get_input_var_names
   e3 = "precipitation_mass_flux_adjust_factor"
   e4 = 'snow_class'
   e5 = 'open_area_or_not'
-  e6 = 'initial_snow_depth'
+  e6 = 'snowpack__initial_depth'
   e7 = 'initial_snow_density'
   expected = [e1,e2,e3,e4,e5,e6,e7]
   
