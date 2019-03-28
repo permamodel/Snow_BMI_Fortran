@@ -29,9 +29,11 @@ If you want to run the compiled BMI model:
 e.g., ./run_bmisnow_model ../../Snow_BMI_Fortran/snow/snow_model_test.cfg
 
 **PLEASE NOTE** The input files path may need to be changed:
+
 `Input Files Path`
 `/Users/kangwang/Documents/simple_snow_model/`
-if you put the input files under the same directory, *please leave this line as blank*.
+
+if you put the input files under the same directory, **please leave this line as blank**.
 
 ### TODO list ###
 
