@@ -15,6 +15,7 @@ make_example(get_value_ex)
 make_example(set_value_ex)
 make_example(conflicting_instances_ex)
 make_example(change_prec_adjust_factor_ex)
+make_example(vargrid_ex)
 
 file(
   COPY ${CMAKE_CURRENT_SOURCE_DIR}/test1.cfg
