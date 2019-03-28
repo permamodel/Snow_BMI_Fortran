@@ -13,6 +13,7 @@ make_example(info_ex)
 make_example(irf_ex)
 make_example(get_value_ex)
 make_example(set_value_ex)
+make_example(conflicting_instances_ex)
 
 file(
   COPY ${CMAKE_CURRENT_SOURCE_DIR}/test1.cfg
