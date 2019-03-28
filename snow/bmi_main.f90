@@ -4,15 +4,15 @@ program bmi_main
   use bmisnowf
   implicit none
 
-  character (len=*), parameter :: var_name1 = "air_temperature"
-  character (len=*), parameter :: var_name2 = "precipitation"
-  character (len=*), parameter :: var_name3 = "snow_depth"
-  character (len=*), parameter :: var_name4 = "snow_density"
+  character (len=*), parameter :: var_name1 = "land_surface_air__temperature"
+  character (len=*), parameter :: var_name2 = "precipitation_mass_flux"
+  character (len=*), parameter :: var_name3 = "snowpack__depth"
+  character (len=*), parameter :: var_name4 = "snowpack__mass-per-volume_density"
   
-  character (len=*), parameter :: var_name5 = "precipitation_adjust_factor"
+  character (len=*), parameter :: var_name5 = "precipitation_mass_flux_adjust_factor"
   character (len=*), parameter :: var_name6 = "snow_class"
   character (len=*), parameter :: var_name7 = "open_area_or_not"
-  character (len=*), parameter :: var_name8 = "initial_snow_depth"
+  character (len=*), parameter :: var_name8 = "snowpack__initial_depth"
   character (len=*), parameter :: var_name9 = "initial_snow_density"
   
   integer, parameter :: ndims = 2
@@ -117,6 +117,8 @@ program bmi_main
   print *, 'Updating'
   
   s = model%update_until(DBLE(55.0))
+  
+  print *, 'Updating'
   
   do i = 1, 5
   

@@ -19,6 +19,8 @@ c----------------------------------------------------------------------
               
               integer:: n_x, n_y, id
               real:: dx, dy
+              
+              
        
           end type snow_model_type
               
@@ -64,9 +66,27 @@ c----------------------------------------------------------------------
       type (snow_model_type), intent (out) :: model
       integer::i
       
+      integer:: status
+      
+      character path_separator
+      
       character*64:: dummystd,c_tair_filename,c_prec_filename
       character*64:: c_path
       
+      if (sizeof(trim(adjustl(config_file))) .eq.0) then
+      
+      print *, 'Please set configuration file'
+      print *, 'e.g., ./run_bmisnow_model ~/Documents/test.cfg'
+      
+      stop
+      
+      endif
+      
+      ! guess the path of cfg file:
+      status = index(config_file, '/', back=.true.)
+      
+      print *, status
+            
       open(101, file = config_file, status = 'unknown')
       
       READ(101,'(A)') dummystd
@@ -94,6 +114,13 @@ c----------------------------------------------------------------------
 
       READ(101,'(A)') dummystd
       READ(101,'(A)') c_path
+      
+      if (sizeof(trim(adjustl(c_path))) .eq. 0) then
+      print *, 'No available path, will try to find inputs'
+      print *, 'from the same folder of this configuration'
+      path_separator = '/'
+      
+      endif
             
       READ(101,'(A)') dummystd
       READ(101,'(A)') c_tair_filename

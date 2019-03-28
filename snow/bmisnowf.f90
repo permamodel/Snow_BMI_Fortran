@@ -263,10 +263,10 @@ contains
     case('precipitation_mass_flux')
        grid_id = 0
        bmi_status = BMI_SUCCESS
-    case('snow_depth')
+    case('snowpack__depth')
        grid_id = 0
        bmi_status = BMI_SUCCESS
-    case('snow_density')
+    case('snowpack__mass-per-volume_density')
        grid_id = 0
        bmi_status = BMI_SUCCESS
     case('precipitation_mass_flux_adjust_factor')
@@ -278,7 +278,7 @@ contains
     case('open_area_or_not')
        grid_id = 0
        bmi_status = BMI_SUCCESS
-    case('initial_snow_depth')
+    case('snowpack__initial_depth')
        grid_id = 0
        bmi_status = BMI_SUCCESS
     case('initial_snow_density')
@@ -505,10 +505,10 @@ contains
     case("precipitation_mass_flux_adjust_factor")
        var_type = "real"
        bmi_status = BMI_SUCCESS
-    case("snow_depth")
+    case("snowpack__depth")
        var_type = "real"
        bmi_status = BMI_SUCCESS
-    case("snow_density")
+    case("snowpack__mass-per-volume_density")
        var_type = "real"
        bmi_status = BMI_SUCCESS
     case("snow_class")
@@ -517,7 +517,7 @@ contains
     case("open_area_or_not")
        var_type = "integer"
        bmi_status = BMI_SUCCESS
-    case("initial_snow_depth")
+    case("snowpack__initial_depth")
        var_type = "real"
        bmi_status = BMI_SUCCESS
     case("initial_snow_density")
@@ -537,13 +537,13 @@ contains
     integer :: bmi_status
 
     select case(var_name)
-    case("snow_depth")
+    case("snowpack__depth")
        var_units = "cm"
        bmi_status = BMI_SUCCESS
-    case("snow_density")
+    case("snowpack__mass-per-volume_density")
        var_units = "kg per m3"
        bmi_status = BMI_SUCCESS
-    case("initial_snow_depth")
+    case("snowpack__initial_depth")
        var_units = "cm"
        bmi_status = BMI_SUCCESS
     case("initial_snow_density")
@@ -578,16 +578,16 @@ contains
     case("precipitation_mass_flux_adjust_factor")
        var_size = sizeof(self%model%PADJ)        ! 'sizeof' in gcc & ifort
        bmi_status = BMI_SUCCESS
-    case("initial_snow_depth")
+    case("snowpack__initial_depth")
        var_size = sizeof(self%model%OLD)         ! 'sizeof' in gcc & ifort
        bmi_status = BMI_SUCCESS
     case("initial_snow_density")
        var_size = sizeof(self%model%OLD)         ! 'sizeof' in gcc & ifort
        bmi_status = BMI_SUCCESS
-    case("snow_depth")
+    case("snowpack__depth")
        var_size = sizeof(self%model%NEW)         ! 'sizeof' in gcc & ifort
        bmi_status = BMI_SUCCESS
-    case("snow_density")
+    case("snowpack__mass-per-volume_density")
        var_size = sizeof(self%model%NEWP)        ! 'sizeof' in gcc & ifort
        bmi_status = BMI_SUCCESS
     case default
@@ -650,16 +650,16 @@ contains
     case("precipitation_mass_flux")
     dest = [self%model%PCPN]
     bmi_status = BMI_SUCCESS
-    case("snow_depth")
+    case("snowpack__depth")
     dest = [self%model%NEW]
     bmi_status = BMI_SUCCESS
-    case("snow_density")
+    case("snowpack__mass-per-volume_density")
     dest = [self%model%NEWP]
     bmi_status = BMI_SUCCESS
     case("precipitation_mass_flux_adjust_factor")
     dest = [self%model%PADJ]
     bmi_status = BMI_SUCCESS
-    case("initial_snow_depth")
+    case("snowpack__initial_depth")
     dest = [self%model%OLD]
     bmi_status = BMI_SUCCESS
     case("initial_snow_density")
@@ -812,7 +812,7 @@ contains
     case("precipitation_mass_flux")
        self%model%PCPN = src(1)
        bmi_status = BMI_SUCCESS
-    case("initial_snow_depth")
+    case("snowpack__initial_depth")
        self%model%OLD = src(1)
        bmi_status = BMI_SUCCESS
     case("initial_snow_density")
