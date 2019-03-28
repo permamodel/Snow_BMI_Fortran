@@ -9,5 +9,6 @@ function(make_test test_name)
   target_link_libraries(${test_name} ${bmi_lib} ${bmisnow_lib})
 endfunction(make_test)
 
+make_test(test_get_component_name)
 make_test(test_initialize)
 make_test(test_finalize)
