@@ -89,7 +89,7 @@ module bmisnowf
        dimension(input_item_count) :: input_items
   character (len=BMI_MAX_VAR_NAME), target, &
        dimension(output_item_count) :: &
-       output_items = (/'snow_depth', 'snow_density'/)
+       output_items = (/'snowpack__depth', 'snowpack__mass-per-volume_density'/)
 
 contains
 
@@ -114,7 +114,7 @@ contains
     input_items(3) = 'precipitation_mass_flux_adjust_factor'
     input_items(4) = 'snow_class'
     input_items(5) = 'open_area_or_not'
-    input_items(6) = 'initial_snow_depth'
+    input_items(6) = 'snowpack__initial_depth'
     input_items(7) = 'initial_snow_density'
 
     names => input_items
