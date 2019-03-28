@@ -1,2 +1,0 @@
-/opt/local/bin/ar qc libSHARED.a  CMakeFiles/SHARED.dir/functions.f.o CMakeFiles/SHARED.dir/bmisnowf.f90.o CMakeFiles/SHARED.dir/bmi_main.f90.o
-/opt/local/bin/ranlib libSHARED.a
