@@ -14,6 +14,8 @@ if [[ -z "$CONDA_PREFIX" ]]; then
     CONDA_PREFIX=`python -c "import sys; print(sys.prefix)"`
 fi
 
+echo $CONDA_PREFIX
+
 examples="info_ex"
 for exe in $examples; do
     run_install_name_tool $exe examples
@@ -24,7 +26,7 @@ for exe in $tests; do
     run_install_name_tool $exe tests
 done
 
-mains="run_snow_model run_bmisnowf"
+mains="run_snow_model run_bmisnow_model"
 for exe in $mains; do
     run_install_name_tool $exe $pwd
 done

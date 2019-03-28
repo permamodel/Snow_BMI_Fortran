@@ -2,7 +2,7 @@ module fixtures
 
   implicit none
 
-  character (len=*), parameter :: config_file = "/Users/kangwang/Documents/Snow_BMI_Fortran/snow/snow_model_test.cfg"
+  character (len=*), parameter :: config_file = ""
 
   integer :: status
 
