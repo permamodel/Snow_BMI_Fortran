@@ -24,6 +24,7 @@ make_test(test_get_time_units)
 make_test(test_get_grid_rank)
 make_test(test_get_value)
 make_test(test_set_value)
+make_test(test_get_var_type)
 make_test(test_finalize)
 
 file(
