@@ -66,16 +66,17 @@ c----------------------------------------------------------------------
       type (snow_model_type), intent (out) :: model
       integer::i
       
-      integer:: status
+      integer:: last_path_separator
       
       character path_separator
+      character*64 config_file1
       
       character*64:: dummystd,c_tair_filename,c_prec_filename
-      character*64:: c_path
+      character*64:: c_path,config_file_path
       
       if (sizeof(trim(adjustl(config_file))) .eq.0) then
       
-      print *, 'Please set configuration file'
+      print *, '*** Error: Please set configuration file'
       print *, 'e.g., ./run_bmisnow_model ~/Documents/test.cfg'
       
       stop
@@ -83,10 +84,18 @@ c----------------------------------------------------------------------
       endif
       
       ! guess the path of cfg file:
-      status = index(config_file, '/', back=.true.)
-      
-      print *, status
+      path_separator = '/'
             
+      ! Chk wether there is at least one separator:
+      last_path_separator = index(config_file, path_separator)
+      if (last_path_separator .eq. 0) then ! No found 
+      config_file_path = './'
+      else
+      last_path_separator = index(config_file, path_separator, 
+     * back=.true.)
+      config_file_path = config_file(1:last_path_separator)
+      endif
+                        
       open(101, file = config_file, status = 'unknown')
       
       READ(101,'(A)') dummystd
@@ -116,9 +125,11 @@ c----------------------------------------------------------------------
       READ(101,'(A)') c_path
       
       if (sizeof(trim(adjustl(c_path))) .eq. 0) then
-      print *, 'No available path, will try to find inputs'
-      print *, 'from the same folder of this configuration'
-      path_separator = '/'
+      print *, '*** Warning: No available path, will try to find inputs'
+      print *, 'from the same folder of this configuration :'
+      print *, config_file_path
+      
+      c_path = config_file_path
       
       endif
             
