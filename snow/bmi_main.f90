@@ -113,14 +113,10 @@ program bmi_main
   write(*, '("P Adjust         = ",f0.2)') precipitation_adjust_factor
   write(*, '("Initial Snow Dep = ",f0.2)') initial_snow_depth
   write(*, '("Initial Snow Den = ",f0.2)') initial_snow_density
-            
+
   print *, 'Updating'
   
-  s = model%update_until(DBLE(55.0))
-  
-  print *, 'Updating'
-  
-  do i = 1, 5
+  do i = 1, end_time
   
 !   s = model%set_value(var_name1, [-5.0]) ! set air temperature
 !   s = model%set_value(var_name2, [0.0])  ! set precipitation
