@@ -2,10 +2,10 @@
 program irf_test
 
   use bmif, only: BMI_MAX_UNITS_NAME
-  use bmiheatf
+  use bmisnowf
   implicit none
 
-  type (bmi_heat) :: m
+  type (bmi_snow) :: m
   integer :: s, i
   double precision :: time, time0, time1
   character (len=BMI_MAX_UNITS_NAME) :: time_units

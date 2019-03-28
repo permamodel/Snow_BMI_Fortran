@@ -10,3 +10,13 @@ function(make_example example_name)
 endfunction(make_example)
 
 make_example(info_ex)
+make_example(irf_ex)
+
+file(
+  COPY ${CMAKE_CURRENT_SOURCE_DIR}/test1.cfg
+  DESTINATION ${CMAKE_BINARY_DIR}/snow/examples
+  )
+file(
+  COPY ${CMAKE_CURRENT_SOURCE_DIR}/test2.cfg
+  DESTINATION ${CMAKE_BINARY_DIR}/snow/examples
+  )
