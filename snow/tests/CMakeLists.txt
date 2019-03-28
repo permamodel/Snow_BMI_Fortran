@@ -22,3 +22,15 @@ make_test(test_get_start_time)
 make_test(test_get_time_step)
 make_test(test_get_time_units)
 make_test(test_finalize)
+
+file(
+  COPY ${CMAKE_CURRENT_SOURCE_DIR}/test.cfg
+  DESTINATION ${CMAKE_BINARY_DIR}/snow/tests)
+  
+file(
+  COPY ${CMAKE_CURRENT_SOURCE_DIR}/tair.csv
+  DESTINATION ${CMAKE_BINARY_DIR}/snow/tests)
+  
+file(
+  COPY ${CMAKE_CURRENT_SOURCE_DIR}/prec.csv
+  DESTINATION ${CMAKE_BINARY_DIR}/snow/tests)
