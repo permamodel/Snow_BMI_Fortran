@@ -109,9 +109,9 @@ contains
     character (*), pointer, intent(out) :: names(:)
     integer :: bmi_status
 
-    input_items(1) = 'precipitation'
-    input_items(2) = 'air_temperature'
-    input_items(3) = 'precipitation_adjust_factor'
+    input_items(1) = 'precipitation_mass_flux'
+    input_items(2) = 'land_surface_air__temperature'
+    input_items(3) = 'precipitation_mass_flux_adjust_factor'
     input_items(4) = 'snow_class'
     input_items(5) = 'open_area_or_not'
     input_items(6) = 'initial_snow_depth'
@@ -257,10 +257,10 @@ contains
     integer :: bmi_status
 
     select case(var_name)
-    case('air_temperature')
+    case('land_surface_air__temperature')
        grid_id = 0
        bmi_status = BMI_SUCCESS
-    case('precipitation')
+    case('precipitation_mass_flux')
        grid_id = 0
        bmi_status = BMI_SUCCESS
     case('snow_depth')
@@ -269,7 +269,7 @@ contains
     case('snow_density')
        grid_id = 0
        bmi_status = BMI_SUCCESS
-    case('precipitation_adjust_factor')
+    case('precipitation_mass_flux_adjust_factor')
        grid_id = 0
        bmi_status = BMI_SUCCESS
     case('snow_class')
@@ -496,13 +496,13 @@ contains
     integer :: bmi_status
 
     select case(var_name)
-    case("air_temperature")
+    case("land_surface_air__temperature")
        var_type = "real"
        bmi_status = BMI_SUCCESS
-    case("precipitation")
+    case("precipitation_mass_flux")
        var_type = "real"
        bmi_status = BMI_SUCCESS
-    case("precipitation_adjust_factor")
+    case("precipitation_mass_flux_adjust_factor")
        var_type = "real"
        bmi_status = BMI_SUCCESS
     case("snow_depth")
@@ -549,10 +549,10 @@ contains
     case("initial_snow_density")
        var_units = "kg per m3"
        bmi_status = BMI_SUCCESS
-    case("air_temperature")
+    case("land_surface_air__temperature")
        var_units = "C"
        bmi_status = BMI_SUCCESS
-    case("precipitation")
+    case("precipitation_mass_flux")
        var_units = "mm"
        bmi_status = BMI_SUCCESS
     case default
@@ -569,13 +569,13 @@ contains
     integer :: bmi_status
 
     select case(var_name)
-    case("air_temperature")
+    case("land_surface_air__temperature")
        var_size = sizeof(self%model%t2_current)  ! 'sizeof' in gcc & ifort
        bmi_status = BMI_SUCCESS
-    case("precipitation")
+    case("precipitation_mass_flux")
        var_size = sizeof(self%model%PCPN)        ! 'sizeof' in gcc & ifort
        bmi_status = BMI_SUCCESS
-    case("precipitation_adjust_factor")
+    case("precipitation_mass_flux_adjust_factor")
        var_size = sizeof(self%model%PADJ)        ! 'sizeof' in gcc & ifort
        bmi_status = BMI_SUCCESS
     case("initial_snow_depth")
@@ -644,10 +644,10 @@ contains
     integer :: bmi_status
 
     select case(var_name)
-    case("air_temperature")
+    case("land_surface_air__temperature")
     dest = [self%model%t2_current]
     bmi_status = BMI_SUCCESS
-    case("precipitation")
+    case("precipitation_mass_flux")
     dest = [self%model%PCPN]
     bmi_status = BMI_SUCCESS
     case("snow_depth")
@@ -656,7 +656,7 @@ contains
     case("snow_density")
     dest = [self%model%NEWP]
     bmi_status = BMI_SUCCESS
-    case("precipitation_adjust_factor")
+    case("precipitation_mass_flux_adjust_factor")
     dest = [self%model%PADJ]
     bmi_status = BMI_SUCCESS
     case("initial_snow_depth")
@@ -806,10 +806,10 @@ contains
     integer :: bmi_status
     
     select case(var_name)
-    case("air_temperature")
+    case("land_surface_air__temperature")
        self%model%t2_current = src(1)
        bmi_status = BMI_SUCCESS
-    case("precipitation")
+    case("precipitation_mass_flux")
        self%model%PCPN = src(1)
        bmi_status = BMI_SUCCESS
     case("initial_snow_depth")
@@ -818,7 +818,7 @@ contains
     case("initial_snow_density")
        self%model%CD = src(1)
        bmi_status = BMI_SUCCESS
-    case("precipitation_adjust_factor")
+    case("precipitation_mass_flux_adjust_factor")
        self%model%PADJ = src(1)
        bmi_status = BMI_SUCCESS
     case default
