@@ -6,7 +6,7 @@ program test_initialize
 
   implicit none
 
-  character (len=*), parameter :: config_file1 = "/Users/kangwang/Documents/Snow_BMI_Fortran/snow/snow_model_test.cfg"
+  character (len=*), parameter :: config_file1 = "test.cfg"
 
   type (bmi_snow) :: m
   integer :: status1, status2
