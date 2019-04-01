@@ -17,7 +17,7 @@ The inputs [**Daily**] are
 | open\_area\_or_not                          | FORESTED/OPEN FLAG FOR VALIDATING RESULTS IN BOREAL, FOREST ZONE (MOST SNOW DEPTHS MEASURED AT OPEN SITES) **[1: Open, 0: Forested]** | unitless | Integer |
 | precipitation\_mass\_flux\_adjust\_factor | Adjustment factor of precipitation [**0-1**]. Adjust precip for canopy interception/sublimation | unitless | Real|
 
-Reference:
+**Reference:**
 Sturm, M., J. Holmgren, and G.E. Liston, 1995: A Seasonal Snow Cover Classification System for Local to Global Applications. J. Climate, 8, 1261–1283.
 
 The outputs [**Daily**] are
