@@ -1,14 +1,8 @@
-This is a simple snow model with BMI (Basic Modeling Interface).
-
-1. The core snow model is developed by **Ross Brown**, Environment Canada
-1. BMI and some code changes are made by **Kang Wang**, University of Colorado Boulder
-
-It's an empirical algorithm to melt snow according to the surface temperature and increase snow depth according to the precipitation that has fallen since the last analysis time.
-
+This is a simple snow model with BMI ([Basic Modeling Interface](https://bmi-spec.readthedocs.io/en/latest/) of [CSDMS](https://csdms.colorado.edu/wiki/Main_Page)) in Fortran cooperatively-developed by **Kang Wang** (University of Colorado Boulder), **Ross Brown** (Environment Canada), and **Bruce Brasnett** (Canadian Meteorological Centre). It's an empirical algorithm to melt snow according to the surface temperature and increase snow depth according to the precipitation that has fallen since the last analysis time.
 
 **If you are using this code, PLEASE CITE:**
 
-> *Brown, R.D., B. Brasnett and D. Robinson. 2003. Gridded North American monthly snow depth and snow water equivalent for GCM evaluation. Atmosphere-Ocean. 41:1-14.*
+> *Brown, R.D., B. Brasnett and D. Robinson. 2003. Gridded North American monthly snow depth and snow water equivalent for GCM evaluation. Atmosphere-Ocean. 41:1-14.* [Goto publication website] (https://www.tandfonline.com/doi/abs/10.3137/ao.410101)
 
 
 The inputs [**Daily**] are
@@ -19,9 +13,12 @@ The inputs [**Daily**] are
 | precipitation\_mass\_flux                   | PRECIPITATION FIELD                                                                                                               | mm       | Real    |
 | snowpack\_\_initial\_depth                   | INITIAL SNOW DEPTH                                                                                                                | cm       | Real    |
 | snowpack\_\_initial\_mass-per-volume_density | INITIAL MEAN DENSITY OF SNOW PACK                                                                                                 | kg3/m3   | Real    |
-| snow_class                                | SNOW CLIMATE CLASS, STURM ET AL 1995 **[0-7]**                                                                                       | unitless | Integer |
+| snow_class                                | SNOW CLIMATE CLASS, STURM et al. (1995) **[0-7]**                                                                                       | unitless | Integer |
 | open\_area\_or_not                          | FORESTED/OPEN FLAG FOR VALIDATING RESULTS IN BOREAL, FOREST ZONE (MOST SNOW DEPTHS MEASURED AT OPEN SITES) **[1: Open, 0: Forested]** | unitless | Integer |
 | precipitation\_mass\_flux\_adjust\_factor | Adjustment factor of precipitation [**0-1**]. Adjust precip for canopy interception/sublimation | unitless | Real|
+
+Reference:
+Sturm, M., J. Holmgren, and G.E. Liston, 1995: A Seasonal Snow Cover Classification System for Local to Global Applications. J. Climate, 8, 1261–1283. [Goto publication website] (https://doi.org/10.1175/1520-0442(1995)008<1261:ASSCCS>2.0.CO;2)
 
 The outputs [**Daily**] are
 
