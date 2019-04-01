@@ -1,4 +1,4 @@
-This is a simple snow model with BMI ([Basic Modeling Interface](https://bmi-spec.readthedocs.io/en/latest/) of [CSDMS](https://csdms.colorado.edu/wiki/Main_Page)) in Fortran cooperatively-developed by **Kang Wang** (University of Colorado Boulder), **Ross Brown** (Environment Canada), and **Bruce Brasnett** (Canadian Meteorological Centre). It's an empirical algorithm to melt snow according to the surface temperature and increase snow depth according to the precipitation that has fallen since the last analysis time.
+This is a simple snow model with BMI ([Basic Modeling Interface](https://bmi-spec.readthedocs.io/en/latest/) of [CSDMS](https://csdms.colorado.edu/wiki/Main_Page)) in Fortran cooperatively-developed by **Kang Wang** (University of Colorado Boulder), **Ross Brown** (Environment Canada), and **Bruce Brasnett** (Canadian Meteorological Centre). It's an empirical algorithm to melt snow according to the surface temperature and increase snow depth according to the precipitation that has fallen since the last analysis time. Details of BMI-Fortran could be found at https://github.com/csdms/bmi-fortran.
 
 **If you are using this code, PLEASE CITE:**
 
