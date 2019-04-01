@@ -51,3 +51,7 @@ e.g.,
 > /Users/kangwang/Documents/simple\_snow_model/
 
 if you put the input files under the same directory to the configuration file, **please leave the second line as BLANK**.
+
+### 3. Example outputs at Barrow, Alaska
+
+![Screenshot](Barrow.png)
