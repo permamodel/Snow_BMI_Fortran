@@ -52,7 +52,7 @@ e.g.,
 
 if you put the input files under the same directory to the configuration file, **please leave the second line as BLANK**.
 
-Snow class map of Sturm et al. (1995) could be download from: https://arcticdata.io/catalog/view/doi:10.5065/D69G5JX5. **[0.5 deg, global]**
+Snow class map of Sturm et al. (1995) could be obtained from: https://arcticdata.io/catalog/view/doi:10.5065/D69G5JX5. **[0.5 deg, global]**
 
 ### 3. Example outputs at Barrow, Alaska
 
