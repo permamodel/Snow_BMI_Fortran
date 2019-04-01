@@ -7,12 +7,17 @@ program test_get_output_var_names
   implicit none
 
   integer, parameter :: n_outputs = 2
-  character (len=*), parameter, dimension(n_outputs) :: &
-       expected = (/'snowpack__depth', 'snowpack__mass-per-volume_density'/)
+  character (len=BMI_MAX_VAR_NAME), allocatable :: expected(:)
+  character (len=BMI_MAX_VAR_NAME) :: e1, e2
 
   type (bmi_snow) :: m
   character (len=BMI_MAX_VAR_NAME), pointer :: names(:)
   integer :: i
+
+  allocate(expected(n_outputs))
+  e1 = "snowpack__depth"
+  e2 = "snowpack__mass-per-volume_density"
+  expected = [e1,e2]
   
   status = m%get_output_var_names(names)
 
