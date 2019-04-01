@@ -115,7 +115,7 @@ contains
     input_items(4) = 'snow_class'
     input_items(5) = 'open_area_or_not'
     input_items(6) = 'snowpack__initial_depth'
-    input_items(7) = 'initial_snow_density'
+    input_items(7) = 'snowpack__initial_mass-per-volume_density'
 
     names => input_items
     bmi_status = BMI_SUCCESS
@@ -281,7 +281,7 @@ contains
     case('snowpack__initial_depth')
        grid_id = 1
        bmi_status = BMI_SUCCESS
-    case('initial_snow_density')
+    case('snowpack__initial_mass-per-volume_density')
        grid_id = 1
        bmi_status = BMI_SUCCESS
     case default
@@ -520,7 +520,7 @@ contains
     case("snowpack__initial_depth")
        var_type = "real"
        bmi_status = BMI_SUCCESS
-    case("initial_snow_density")
+    case("snowpack__initial_mass-per-volume_density")
        var_type = "real"
        bmi_status = BMI_SUCCESS
     case default
@@ -546,7 +546,7 @@ contains
     case("snowpack__initial_depth")
        var_units = "cm"
        bmi_status = BMI_SUCCESS
-    case("initial_snow_density")
+    case("snowpack__initial_mass-per-volume_density")
        var_units = "kg per m3"
        bmi_status = BMI_SUCCESS
     case("land_surface_air__temperature")
@@ -581,7 +581,7 @@ contains
     case("snowpack__initial_depth")
        var_size = sizeof(self%model%OLD)         ! 'sizeof' in gcc & ifort
        bmi_status = BMI_SUCCESS
-    case("initial_snow_density")
+    case("snowpack__initial_mass-per-volume_density")
        var_size = sizeof(self%model%OLD)         ! 'sizeof' in gcc & ifort
        bmi_status = BMI_SUCCESS
     case("snowpack__depth")
@@ -662,7 +662,7 @@ contains
     case("snowpack__initial_depth")
     dest = [self%model%OLD]
     bmi_status = BMI_SUCCESS
-    case("initial_snow_density")
+    case("snowpack__initial_mass-per-volume_density")
     dest = [self%model%CD]
     bmi_status = BMI_SUCCESS
     case default
@@ -815,7 +815,7 @@ contains
     case("snowpack__initial_depth")
        self%model%OLD = src(1)
        bmi_status = BMI_SUCCESS
-    case("initial_snow_density")
+    case("snowpack__initial_mass-per-volume_density")
        self%model%CD = src(1)
        bmi_status = BMI_SUCCESS
     case("precipitation_mass_flux_adjust_factor")

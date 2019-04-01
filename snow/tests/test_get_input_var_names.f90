@@ -20,7 +20,7 @@ program test_get_input_var_names
   e4 = 'snow_class'
   e5 = 'open_area_or_not'
   e6 = 'snowpack__initial_depth'
-  e7 = 'initial_snow_density'
+  e7 = 'snowpack__initial_mass-per-volume_density'
   expected = [e1,e2,e3,e4,e5,e6,e7]
   
   status = m%get_input_var_names(names)
