@@ -11,7 +11,7 @@ It's an empirical algorithm to melt snow according to the surface temperature an
 > *Brown, R.D., B. Brasnett and D. Robinson. 2003. Gridded North American monthly snow depth and snow water equivalent for GCM evaluation. Atmosphere-Ocean. 41:1-14.*
 
 
-The inputs are
+The inputs [**Daily**] are
 
 | Standard Name                             | Description                                                                                                                       | Unit     | Type    |
 |-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|----------|---------|
@@ -21,8 +21,9 @@ The inputs are
 | snowpack\_\_initial\_mass-per-volume_density | INITIAL MEAN DENSITY OF SNOW PACK                                                                                                 | kg3/m3   | Real    |
 | snow_class                                | SNOW CLIMATE CLASS, STURM ET AL 1995 **[0-7]**                                                                                       | unitless | Integer |
 | open\_area\_or_not                          | FORESTED/OPEN FLAG FOR VALIDATING RESULTS IN BOREAL, FOREST ZONE (MOST SNOW DEPTHS MEASURED AT OPEN SITES) **[1: Open, 0: Forested]** | unitless | Integer |
+| precipitation\_mass\_flux\_adjust\_factor | Adjustment factor of precipitation [**0-1**]. Adjust precip for canopy interception/sublimation | unitless | Real|
 
-The outputs are
+The outputs [**Daily**] are
 
 | Standard Name                     | Description               | Unit   | Type |
 |-----------------------------------|---------------------------|--------|------|
