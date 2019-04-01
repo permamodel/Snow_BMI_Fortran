@@ -8,7 +8,6 @@ c----------------------------------------------------------------------
               
               integer:: ICL,IOPEN,SIXHRS,N_TIME_STEPS
               real   :: PADJ
-              reaL,dimension(2)   :: TSFC
               real   :: PCPN
               REAL   :: OLD,CD
               REAL   :: NEW,NEWP
@@ -20,8 +19,6 @@ c----------------------------------------------------------------------
               integer:: n_x, n_y, id
               real:: dx, dy
               
-              
-       
           end type snow_model_type
               
 c----------------------------------------------------------------------
@@ -32,18 +29,12 @@ c----------------------------------------------------------------------
       type (snow_model_type) :: model
       
       ! update ONE time step:
-           
-      MODEL%TSFC(1) = MODEL%t2_last
-      MODEL%TSFC(2) = MODEL%t2_current
                 
       call NEW_BRUCE(MODEL)
       
-!      MODEL%SNOD(model%t) = model%NEW
-!      MODEL%SDEN(model%t) = model%NEWP
-      
       ! replace previous variables by current ones:
             
-      MODEL%t2_last  = MODEL%TSFC(2) 
+      MODEL%t2_last  = MODEL%t2_current
       
       MODEL%OLD = model%new
       MODEL%CD  = model%newp
@@ -191,96 +182,6 @@ c----------------------------------------------------------------------
                 
       END subroutine finalize
 
-!================================================
-      
-!      SUBROUTINE RUN_SNOW_MODEL(N_TIME, N_DAYS_IN_TIMESTEP 
-!     * , TAIR, PRE ,ICL, IOPEN, PADJ, SNOD, SDEN)
-! 
-!* 
-!* AUTHOR  - Kang Wang January 2019
-!*
-!* PURPOSE - Use a simple function to apply Bruce subroutine to a time series. 
-!*           only for a single time series input
-!* 
-!* ARGUMENTS-
-!*    I    - N_TIME             - How many time step (months or daily) 
-!*    I    - N_DAYS_IN_TIMESTEP - How days in a time step
-!*                                N_TIME = Daily, N_DAYS_IN_TIMESTEP= an array of ONE
-!*                                N_TIME = Monthly, N_DAYS_IN_TIMESTEP = days in months
-!
-!*    I    - TAIR               - Array of air temperature (Length = N_TIME) (Degree C)
-!*    I    - PRE                - Array of precipitation   (Length = N_TIME) (m)
-!
-!*    I    - ICL                - SNOW CLIMATE CLASS, STURM ET AL 1995 (CODE FROM 0-7)
-!*    I    - IOPEN              - FORESTED/OPEN FLAG FOR VALIDATING RESULTS IN BOREAL
-!*                                FOREST ZONE (MOST SNOW DEPTHS MEASURED AT OPEN SITES)
-!*                                IOPEN=1 IN OPEN, O IN FOREST
-!*
-!c...Sturm Snow Classification:
-!c
-!c  		water = 0            RHOMIN
-!c  		tundra snow = 1      200 
-!c  		taiga snow = 2       160 
-!c  		maritime snow = 3    160 
-!c  		ephemeral snow = 4   180 
-!c  		prairie snow = 5     140 
-!c  		alpine snow = 6      120 
-!c  		ice = 7 (ice caps)   (same as Tundra)
-!c
-!
-!      IMPLICIT NONE
-!
-!      INTEGER, intent(in):: N_TIME, ICL,IOPEN
-!      
-!      INTEGER, intent(in):: N_DAYS_IN_TIMESTEP(N_TIME)
-!      REAL, intent(in)::    PADJ
-!      REAL, intent(in)::    TAIR(N_TIME), PRE(N_TIME)
-!      real, intent(out)::   SNOD(N_TIME), SDEN(N_TIME)
-!     
-!      REAL save_OLD, save_CD, TSFC(2), OLD, CD
-!      REAL t2_air, t2_last, pcpn
-!      real NEW,NEWP
-!
-!      INTEGER SIXHRS, i
-!          
-!      save_old = 0
-!      save_cd  = 0
-!      
-!      do i = 1,N_TIME
-!      	  
-!          SIXHRS = N_DAYS_IN_TIMESTEP(i) * 24
-!          
-!          t2_air = TAIR(i)
-!          
-!          if (i ==1) then 
-!          t2_last = TAIR(i)
-!          else
-!          t2_last = TAIR(i-1)
-!          endif
-!          
-!          pcpn = PRE(i)
-!          
-!          TSFC(1) = t2_last
-!          TSFC(2) = t2_air
-!          
-!          OLD = save_old
-!          CD  = save_cd         
-!          
-!          call NEW_BRUCE(OLD,NEW,NEWP,TSFC,PCPN,CD,ICL,IOPEN,Padj
-!     *  ,SIXHRS)      
-!     
-!     	  save_old = new
-!     	  save_cd  = newp
-!     	  
-!     	  SNOD(i) = new
-!     	  SDEN(i) = newp
-!      
-!      enddo
-!      
-!      RETURN
-!      
-!      END SUBROUTINE RUN_SNOW_MODEL
-
 c----------------------------------------------------------------------
       SUBROUTINE NEW_BRUCE(model)
           
@@ -288,6 +189,8 @@ c----------------------------------------------------------------------
       
       type (snow_model_type):: model
 
+*
+* Changes (2019-03-29) remove TSFC variable, use TS1 and TS2 only.
 * 
 *AUTHOR  - B. BRASNETT  FEBRUARY 1997
 *
@@ -299,8 +202,8 @@ c----------------------------------------------------------------------
 *ARGUMENTS- 
 *   I/O   - OLD    - ORIGINAL SNOW DEPTH FIELD (cm)
 *    O    - NEW    - MODIFIED SNOW DEPTH FIELD (cm)
-*    I    - TSFC   - SURFACE TEMPERATURE FIELDS (NORMALLY THE 6 HOUR
-*                    TEMPERATURES FROM THE START TO THE END OF THE INTERVAL - deg.C)
+*    I    - TS1    - Surface Temperature in Last Time Step (deg.C)
+*    I    - TS2    - Current Surface Temperature (deg.C)
 *    I    - PCPN   - PRECIPITATION FIELD (m)
 *   I/O   - CD     - INITIAL MEAN DENSITY OF SNOW PACK IN KG/M3
 *    O    - NEWP   - FINAL MEAN DENSITY OF SNOW PACK IN KG/M3
@@ -327,7 +230,7 @@ c
 C     PARAMETER (SIXHRS = 6)
 c
       REAL    NEW, NEWDENS
-      REAL    OLD,TSFC(2),Tmelt,TDD,Padj
+      REAL    OLD,Tmelt,TDD,Padj
       real    pcpn
       REAL    CD,NEWP,dd,den_gcm,del_den,C2
       real    Lf,Cw,rhow,rhoice,phase,rain,snow,rmelt,Prain
@@ -341,7 +244,6 @@ c
       DATA   RHOMAX / 600./
       
       OLD    = MODEL%OLD
-      TSFC   = MODEL%TSFC
       PCPN   = MODEL%PCPN *0.001
       CD     = MODEL%CD
       ICL    = MODEL%ICL
@@ -350,6 +252,8 @@ c
       SIXHRS = MODEL%SIXHRS
       NEW    = 0
       NEWP   = 0
+      TS1    = MODEL%t2_last
+      TS2    = MODEL%t2_current
             
 cf2py intent(out) NEW, NEWP      
       
@@ -368,8 +272,8 @@ c
 *_____SCREEN OUT GRID POINTS WITH NO SNOW AND NO POSSIBLITY OF GETTING
 *     SNOW OVER THE PERIOD
 *
-      IF (.NOT. (OLD .LE. 0. .AND. TSFC(1) .GT. 2.
-     *                         .AND. TSFC(2) .GT. 2.)) THEN
+      IF (.NOT. (OLD .LE. 0. .AND. TS1 .GT. 2.
+     *                         .AND. TS2 .GT. 2.)) THEN
 *
 *_____CONVERT SNOW VOLUME TO WATER EQUIVALENT (MM)
 *
@@ -408,8 +312,6 @@ c
 *       DENSIFICATION DUE TO MELTING, THEN ADD SNOWFALL ACCUMULATION
 *       ADJUST DENSITY FOR NEW SNOW AFTER THE FINAL TIMESTEP
 *
-          TS1 = TSFC(1)
-          TS2 = TSFC(2)
           NEW = H2O
 c
 c...Compute new snowfall density as function of air temperature following
@@ -434,11 +336,11 @@ c
 	  SNOW = 0.
 	  RAIN = 0.
 	  if(PCPN.gt.0.) then
-	     if(TS1.gt.0.) then
-		phase = 0.
-	     else
-		phase = 1.
-	     endif
+	  if(TS1.gt.0.) then
+	  phase = 0.
+	  else
+	  phase = 1.
+	  endif
 c
 c...Evaluate the inclusion of mixed precip
 c
@@ -483,7 +385,7 @@ c
 c..Warm wet snow - use higher upper limit for settling. Value of 700 selected
 c  based on performance at Col de Porte.
 c
-          IF(TS1.ge.Tmelt .and. NEW.GT.0.) then
+          IF(TS1 .ge. Tmelt .and. NEW .GT. 0.) then
 	    sdepcm = NEW/DENSITY * 100.
 	    denmax = 700. - (20470./sdepcm)*(1.-exp(-sdepcm/67.3))
 c	    write(66,*) density,denmax
@@ -525,8 +427,8 @@ c
 c-------------------------------------------------------------------------
 c
           DO 10 TIME=1, SIXHRS-1
-            TS = ((TSFC(2) - TSFC(1))*
-     *             FLOAT(TIME)*SIXTH + TSFC(1))
+            TS = ((TS2 - TS1)*
+     *             FLOAT(TIME)*SIXTH + TS1)
 c
 c...Compute new snowfall density as function of air temperature following
 c   Hedstrom and Pomeroy (1998)
@@ -667,7 +569,7 @@ c	     if(TS2.gt.0. .and. TS2.lt.2.) then
 c	        phase = 1.0 - TS2*0.5
 c	     endif
 
-              SNOW = PCPN*phase
+          SNOW = PCPN*phase
 	      RAIN = PCPN*(1.-phase)
 	    endif
 c
