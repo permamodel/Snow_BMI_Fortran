@@ -20,7 +20,7 @@ program set_value_ex
 
   s = m%get_output_var_names(names)
   do i = 1, 2
-  write (*,"(a, i, ': ', a)") "Output variables ", i, trim(names(i))
+  write (*,"(a, i3, ': ', a)") "Output variables ", i, trim(names(i))
   enddo
   
   s = m%get_var_grid(names(1), grid_id)
