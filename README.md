@@ -2,7 +2,7 @@ This is a simple snow model with BMI ([Basic Modeling Interface](https://bmi-spe
 
 **If you are using this code, PLEASE CITE:**
 
-> *Brown, R.D., B. Brasnett and D. Robinson. 2003. Gridded North American monthly snow depth and snow water equivalent for GCM evaluation. Atmosphere-Ocean. 41:1-14.* [Goto publication website] (https://www.tandfonline.com/doi/abs/10.3137/ao.410101)
+> *Brown, R.D., B. Brasnett and D. Robinson. 2003. Gridded North American monthly snow depth and snow water equivalent for GCM evaluation. Atmosphere-Ocean. 41:1-14.* (https://www.tandfonline.com/doi/abs/10.3137/ao.410101)
 
 
 The inputs [**Daily**] are
@@ -18,7 +18,7 @@ The inputs [**Daily**] are
 | precipitation\_mass\_flux\_adjust\_factor | Adjustment factor of precipitation [**0-1**]. Adjust precip for canopy interception/sublimation | unitless | Real|
 
 Reference:
-Sturm, M., J. Holmgren, and G.E. Liston, 1995: A Seasonal Snow Cover Classification System for Local to Global Applications. J. Climate, 8, 1261–1283. [Goto publication website] (https://doi.org/10.1175/1520-0442(1995)008<1261:ASSCCS>2.0.CO;2)
+Sturm, M., J. Holmgren, and G.E. Liston, 1995: A Seasonal Snow Cover Classification System for Local to Global Applications. J. Climate, 8, 1261–1283.
 
 The outputs [**Daily**] are
 
