@@ -5,6 +5,12 @@ This is a simple snow model with BMI (Basic Modeling Interface).
 
 It's an empirical algorithm to melt snow according to the surface temperature and increase snow depth according to the precipitation that has fallen since the last analysis time.
 
+
+**If you are using this code, PLEASE CITE:**
+
+> *Brown, R.D., B. Brasnett and D. Robinson. 2003. Gridded North American monthly snow depth and snow water equivalent for GCM evaluation. Atmosphere-Ocean. 41:1-14.*
+
+
 The inputs are
 
 | Standard Name                             | Description                                                                                                                       | Unit     | Type    |
@@ -15,9 +21,13 @@ The inputs are
 | snowpack\_\_initial\_mass-per-volume_density | INITIAL MEAN DENSITY OF SNOW PACK                                                                                                 | kg3/m3   | Real    |
 | snow_class                                | SNOW CLIMATE CLASS, STURM ET AL 1995 **[0-7]**                                                                                       | unitless | Integer |
 | open\_area\_or_not                          | FORESTED/OPEN FLAG FOR VALIDATING RESULTS IN BOREAL, FOREST ZONE (MOST SNOW DEPTHS MEASURED AT OPEN SITES) **[1: Open, 0: Forested]** | unitless | Integer |
-**If you are using this code, please cite:**
 
-**Brown, R.D., B. Brasnett and D. Robinson. 2003. Gridded North American monthly snow depth and snow water equivalent for GCM evaluation. Atmosphere-Ocean. 41:1-14.**
+The outputs are
+
+| Standard Name                     | Description               | Unit   | Type |
+|-----------------------------------|---------------------------|--------|------|
+| snowpack__depth                   | SNOW DEPTH                | cm     | Real |
+| snowpack\_\_mass-per-volume_density | MEAN DENSITY OF SNOW PACK | kg3/m3 | Real |
 
 ### Compile with cmake ###
 
@@ -27,7 +37,7 @@ The inputs are
 > `source ../scripts/update_rpaths.sh`  
 > `ctest`
 
-####If you want to run the compiled BMI model:####
+**If you want to run the compiled BMI model:**
 
 > `cd [install_path]/bin/`  
 > `./run_bmisnow_model [configuration_file]`
@@ -40,6 +50,6 @@ e.g.,
 > Input Files Path  
 > /Users/kangwang/Documents/simple\_snow_model/
 
-if you put the input files under the same directory to the configuration file, **please leave the second line as blank**.
+if you put the input files under the same directory to the configuration file, **please leave the second line as BLANK**.
 
 ### How do you prepare your cases ###
