@@ -30,7 +30,7 @@ The outputs [**Daily**] are
 | snowpack__depth                   | SNOW DEPTH                | cm     | Real |
 | snowpack\_\_mass-per-volume_density | MEAN DENSITY OF SNOW PACK | kg3/m3 | Real |
 
-### Compile with cmake ###
+### 1. Compile with cmake ###
 
 > `mkdir _build && cd _build`  
 > `cmake .. -DCMAKE_INSTALL_PREFIX=[install_path]`  
@@ -46,11 +46,11 @@ The outputs [**Daily**] are
 e.g., 
 `./run_bmisnow_model ../../Snow_BMI_Fortran/snow/snow_model_test.cfg`
 
-**PLEASE NOTE** The input files path may need to be changed:
+### 2. How do you prepare your cases ###
+
+**NOTE:** The input files path in configuration file may need to be changed:
 
 > Input Files Path  
 > /Users/kangwang/Documents/simple\_snow_model/
 
 if you put the input files under the same directory to the configuration file, **please leave the second line as BLANK**.
-
-### How do you prepare your cases ###
