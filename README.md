@@ -41,7 +41,7 @@ The outputs [**Daily**] are
 > `./run_bmisnow_model [configuration_file]`
 
 e.g., 
-`./run_bmisnow_model ../../Snow_BMI_Fortran/snow/snow_model_test.cfg`
+`./run_bmisnow_model ../../Snow_BMI_Fortran/data/snow_model_test.cfg`
 
 ### 2. How do you prepare your cases ###
 
@@ -56,4 +56,4 @@ Snow class map of Sturm et al. (1995) could be obtained from: https://arcticdata
 
 ### 3. Example outputs at Barrow, Alaska
 
-![Screenshot](Barrow.png)
+![Screenshot](./data/Barrow.png)
