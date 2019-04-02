@@ -1,19 +1,18 @@
 set(pkg_name snow_model)
 set(mod_name ${pkg_name})
 set(src_${pkg_name} functions.f main.f90)
-set(src_bmi${pkg_name} functions.f bmisnowf.f90 bmi_main.f90)
+set(src_bmi${pkg_name} functions.f bmisnowf.f90 bmi.f90)
 
 configure_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/${pkg_name}.pc.cmake
   ${CMAKE_CURRENT_SOURCE_DIR}/${pkg_name}.pc)
 
 add_library(${bmisnow_lib} SHARED ${src_bmi${pkg_name}})
-target_link_libraries(${bmisnow_lib} ${bmi_lib})
 
 add_executable(run_${pkg_name} ${src_${pkg_name}})
 
-add_executable(run_bmi${pkg_name} ${src_bmi${pkg_name}})
-target_link_libraries(run_bmi${pkg_name} ${bmi_lib} ${bmisnow_lib})
+add_executable(run_bmi${pkg_name} bmi_main.f90)
+target_link_libraries(run_bmi${pkg_name} ${bmisnow_lib})
 
 install(
   PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/run_${pkg_name}
