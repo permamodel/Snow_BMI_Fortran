@@ -1,5 +1,0 @@
-Name: snow
-Description: An example of the heat equation, with a BMI, in Fortran
-Version: 1.0
-Libs: -L/Users/kangwang/Documents/test/lib -lbmisnowf -lbmif
-Cflags: -I/Users/kangwang/Documents/test/include -std=f2003
