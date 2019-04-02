@@ -27,8 +27,8 @@ file(
   )
 file(
   COPY ${data_dir}/test_tair.csv
-  DESTINATION ${CMAKE_BINARY_DIR}/snow/tests)
+  DESTINATION ${CMAKE_BINARY_DIR}/snow/examples)
   
 file(
   COPY ${data_dir}/test_prec.csv
-  DESTINATION ${CMAKE_BINARY_DIR}/snow/tests)
+  DESTINATION ${CMAKE_BINARY_DIR}/snow/examples)
