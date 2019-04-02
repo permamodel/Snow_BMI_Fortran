@@ -88,8 +88,7 @@ module bmisnowf
   character (len=BMI_MAX_VAR_NAME), target, &
        dimension(input_item_count) :: input_items
   character (len=BMI_MAX_VAR_NAME), target, &
-       dimension(output_item_count) :: &
-       output_items = (/'snowpack__depth', 'snowpack__mass-per-volume_density'/)
+       dimension(output_item_count) :: output_items
 
 contains
 
@@ -126,6 +125,9 @@ contains
     class (bmi_snow), intent(in) :: self
     character (*), pointer, intent(out) :: names(:)
     integer :: bmi_status
+
+    output_items(1) = 'snowpack__depth'
+    output_items(2) = 'snowpack__mass-per-volume_density'
 
     names => output_items
     bmi_status = BMI_SUCCESS
