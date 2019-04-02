@@ -36,9 +36,9 @@ file(
   DESTINATION ${CMAKE_BINARY_DIR}/snow/tests)
   
 file(
-  COPY ${CMAKE_CURRENT_SOURCE_DIR}/tair.csv
+  COPY ${data_dir}/test_tair.csv
   DESTINATION ${CMAKE_BINARY_DIR}/snow/tests)
   
 file(
-  COPY ${CMAKE_CURRENT_SOURCE_DIR}/prec.csv
+  COPY ${data_dir}/test_prec.csv
   DESTINATION ${CMAKE_BINARY_DIR}/snow/tests)
