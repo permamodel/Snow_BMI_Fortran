@@ -56,4 +56,4 @@ Snow class map of Sturm et al. (1995) could be obtained from: https://arcticdata
 
 ### 3. Example outputs at Barrow, Alaska
 
-![Screenshot](Barrow.png)
+![Screenshot](./data/Barrow.png)
