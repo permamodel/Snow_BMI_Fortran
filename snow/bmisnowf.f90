@@ -586,6 +586,12 @@ contains
     case("snowpack__initial_mass-per-volume_density")
        var_size = sizeof(self%model%OLD)         ! 'sizeof' in gcc & ifort
        bmi_status = BMI_SUCCESS
+    case("open_area_or_not")
+       var_size = sizeof(self%model%IOPEN)
+       bmi_status = BMI_SUCCESS
+    case("snow_class")
+       var_size = sizeof(self%model%ICL)
+       bmi_status = BMI_SUCCESS
     case("snowpack__depth")
        var_size = sizeof(self%model%NEW)         ! 'sizeof' in gcc & ifort
        bmi_status = BMI_SUCCESS
