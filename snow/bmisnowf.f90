@@ -557,6 +557,15 @@ contains
     case("precipitation_mass_flux")
        var_units = "mm"
        bmi_status = BMI_SUCCESS
+    case("precipitation_mass_flux_adjust_factor")
+       var_units = "-"
+       bmi_status = BMI_SUCCESS
+    case("open_area_or_not")
+       var_units = "-"
+       bmi_status = BMI_SUCCESS
+    case("snow_class")
+       var_units = "-"
+       bmi_status = BMI_SUCCESS
     case default
        var_units = "-"
        bmi_status = BMI_FAILURE
