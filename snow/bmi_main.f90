@@ -116,7 +116,7 @@ program bmi_main
 
   print *, 'Updating'
   
-  do i = 1, end_time
+  do i = 1, int(end_time)
   
 !   s = model%set_value(var_name1, [-5.0]) ! set air temperature
 !   s = model%set_value(var_name2, [0.0])  ! set precipitation
