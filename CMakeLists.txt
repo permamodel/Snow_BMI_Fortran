@@ -1,6 +1,12 @@
-cmake_minimum_required(VERSION 2.8)
+# ECSimpleSnow
+cmake_minimum_required(VERSION 3.12)
 
-project(bmisnow Fortran)
+project(bmisnow
+    VERSION 1.2.0
+    DESCRIPTION "A simple snow model with a Basic Model Interface"
+    HOMEPAGE_URL "https://permamodel.github.io"
+    LANGUAGES Fortran
+)
 
 set(bmi_version 1.0)
 set(bmisnow_lib bmisnowf)
