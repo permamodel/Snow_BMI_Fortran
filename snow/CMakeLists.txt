@@ -1,17 +1,14 @@
 # ECSimplesnow: model
 set(pkg_name snow_model)
-set(src_${pkg_name} functions.f main.f90)
-set(src_bmi${pkg_name} functions.f bmisnowf.f90 bmi.f90)
 
-# Build a shared library, except on Windows.
+add_library(snow OBJECT functions.f)
 if(WIN32)
-  add_library(${bmisnow_lib} ${src_bmi${pkg_name}})
+  add_library(${bmisnow_lib} STATIC bmisnowf.f90 bmi.f90 $<TARGET_OBJECTS:snow>)
 else()
-  add_library(${bmisnow_lib} SHARED ${src_bmi${pkg_name}})
+  add_library(${bmisnow_lib} SHARED bmisnowf.f90 bmi.f90 $<TARGET_OBJECTS:snow>)
 endif()
 
-add_executable(run_${pkg_name} ${src_${pkg_name}})
-
+add_executable(run_${pkg_name} main.f90 $<TARGET_OBJECTS:snow>)
 add_executable(run_bmi${pkg_name} bmi_main.f90)
 target_link_libraries(run_bmi${pkg_name} ${bmisnow_lib})
 
