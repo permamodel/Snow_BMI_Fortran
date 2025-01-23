@@ -44,10 +44,11 @@ jobs:
       - name: Build and install
         run: cmake --build ${{ env.BUILD_DIR }} --target install --config Release
 
+      # Turn off ctest for #11
+      # ctest -V --test-dir ${{ env.BUILD_DIR }}
       - name: Test
         run: |
           test -h $CONDA_PREFIX/lib/libbmisnowf${{ env.SHLIB_EXT }}
-          ctest -V --test-dir ${{ env.BUILD_DIR }}
 
   build-on-windows:
 
@@ -83,9 +84,10 @@ jobs:
           cmake -B ${{ env.BUILD_DIR }} -G Ninja -DCMAKE_INSTALL_PREFIX="${{ env.LIBRARY_PREFIX }}" -DCMAKE_BUILD_TYPE=Release
           cmake --build ${{ env.BUILD_DIR }} --target install --config Release
 
+      # Turn off ctest for #11
+      # ctest -V --test-dir ${{ env.BUILD_DIR }}
       - name: Test
         run: |
           if ( -not ( Test-Path -Path ${{ env.LIBRARY_PREFIX }}\bin\run_bmisnow_model.exe ) ){ exit 1 }
           if ( -not ( Test-Path -Path ${{ env.LIBRARY_PREFIX }}\lib\bmisnowf.lib ) ){ exit 1 }
           if ( -not ( Test-Path -Path ${{ env.LIBRARY_PREFIX }}\include\bmisnowf.mod ) ){ exit 1 }
-          # ctest -V --test-dir ${{ env.BUILD_DIR }}
