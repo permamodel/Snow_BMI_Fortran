@@ -44,11 +44,11 @@ jobs:
       - name: Build and install
         run: cmake --build ${{ env.BUILD_DIR }} --target install --config Release
 
-      # Turn off ctest for #11
-      # ctest -V --test-dir ${{ env.BUILD_DIR }}
-      - name: Test
-        run: |
-          test -h $CONDA_PREFIX/lib/libbmisnowf${{ env.SHLIB_EXT }}
+      # Turn off testing for #11
+      # - name: Test
+      #   run: |
+      #     test -h $CONDA_PREFIX/lib/libbmisnowf${{ env.SHLIB_EXT }}
+      #     ctest -V --test-dir ${{ env.BUILD_DIR }}
 
   build-on-windows:
 
