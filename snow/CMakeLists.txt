@@ -1,6 +1,5 @@
 # ECSimplesnow: model
 set(pkg_name snow_model)
-set(mod_name ${pkg_name})
 set(src_${pkg_name} functions.f main.f90)
 set(src_bmi${pkg_name} functions.f bmisnowf.f90 bmi.f90)
 
