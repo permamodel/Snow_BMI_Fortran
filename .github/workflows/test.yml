@@ -47,7 +47,7 @@ jobs:
       - name: Test
         run: |
           test -h $CONDA_PREFIX/lib/libbmisnowf${{ env.SHLIB_EXT }}
-          # ctest -V --test-dir ${{ env.BUILD_DIR }}
+          ctest -V --test-dir ${{ env.BUILD_DIR }}
 
   build-on-windows:
 
